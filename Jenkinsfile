@@ -14,19 +14,19 @@ pipeline {
         }
         stage('Pull Image') {
             steps {
-                sh 'docker compose pull'
+                sh 'docker-compose pull'
             }
         }
 
         stage('Run Tests') {
             steps {
-                sh 'docker compose up --abort-on-container-exit --exit-code-from ros1_ci'
+                sh 'docker-compose up --abort-on-container-exit --exit-code-from ros1_ci'
             }
         }
 
         stage('Cleanup') {
             steps {
-                sh 'docker compose down'
+                sh 'docker-compose down'
             }
         }
         stage('Done') {
